@@ -1,7 +1,16 @@
 <app-offices-header></app-offices-header>
-<div class="controls">
-  <app-button [title]="'Add New Office'"></app-button>
-  <p class="controls-count">1 Offices</p>
+<div class="offices">
+  <div class="offices__controls">
+    <app-button
+      [title]="'Add New Office'">
+    </app-button>
+    <p class="offices__controls-count">1 Offices</p>
+  </div>
+  <div class="offices__list">
+    <div *ngFor="let office of offices" class="controls__offices-office">
+      <div>{{office}}</div>
+    </div>
+  </div>
 </div>
-<p>offices works!</p>
+
 <app-offices-footer></app-offices-footer>

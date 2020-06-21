@@ -1,10 +1,16 @@
  <button class="main-button"
+   [ngStyle]="{'background-color': animationColorConfig.startColor}"
    (click)="handleButtonClick()"
    (mouseenter)="handleAnimationState(true)"
    (mouseleave)="handleAnimationState(false)">
-   <span class="main-button__title">{{title}}</span>
+   <span
+     [ngStyle]="{'color': animationColorConfig.endColor}"
+     [@titleTitleTrigger]="{value: isOpenState ? 'active' : 'inactive', params: animationColorConfig}"
+     class="main-button__title">
+     {{title}}
+   </span>
    <span
      class="main-button-animate"
-     [@buttonHoverTrigger]="{value: isOpenState ? 'active' : 'inactive'}"
-   ></span>
+     [@buttonHoverTrigger]="{value: isOpenState ? 'active' : 'inactive', params: animationColorConfig}">
+   </span>
  </button>

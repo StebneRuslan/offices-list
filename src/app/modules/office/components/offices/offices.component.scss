@@ -1,19 +1,27 @@
 @import "src/assets/scss/global-variables";
 
-.controls {
-  height: 32px;
+.offices {
   border-top: 1px dashed rgb(183, 189, 196);
   border-bottom: 1px dashed rgb(183, 189, 196);
   padding: 35px 0 35px 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 15px;
-  &-count {
-    font-family: $main-font-family;
-    font-size: 14px;
-    font-weight: normal;
-    color: $main-controls-color;
-    cursor: default;
+  flex-direction: column;
+  &__controls {
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &-count {
+      font-family: $main-font-family;
+      font-size: 14px;
+      font-weight: normal;
+      color: $main-controls-color;
+      cursor: default;
+    }
+  }
+  &__list {
+
   }
 }
