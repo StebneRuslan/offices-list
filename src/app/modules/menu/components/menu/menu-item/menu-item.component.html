@@ -1,0 +1,7 @@
+<div
+  class="menu-item"
+  (mouseenter)="handleAnimationState(true)"
+  (mouseleave)="handleAnimationState(false)">
+  <span [@menuTitleTrigger]="isOpenState ? 'active' : 'inactive'" class="menu-item-title">{{title | uppercase}}</span>
+  <div [@menuContentTrigger]="isOpenState ? 'active' : 'inactive'" class="menu-item-animate"></div>
+</div>

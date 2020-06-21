@@ -1,0 +1,45 @@
+@import "src/assets/scss/global-variables";
+
+.menu {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  background-color: $main-menu-background-color;
+  &__simple-container {
+    border-bottom: 1px solid $main-menu-border-color;
+    padding-left: 20px;
+  }
+  &__simple {
+    font-family: $main-font-family;
+    color: $main-controls-color;
+    height: 30px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    &:-webkit-any-link {
+      color: $main-controls-color;
+      text-decoration: none;
+    }
+
+    &-active {
+      position: relative;
+      &:before {
+        content: "";
+        width: 3px;
+        position: absolute;
+        height: 100%;
+        display: block;
+        left: -20px;
+        background-color: #53687e;
+      }
+    }
+    &-inactive {
+      pointer-events: none;
+      cursor: auto;
+      opacity: $main-inactive-opacity;
+    }
+  }
+}

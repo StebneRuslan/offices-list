@@ -1,0 +1,24 @@
+@import "src/assets/scss/global-variables";
+
+.menu-item {
+  position: relative;
+  color: $main-controls-color;
+  font-family: $main-font-family;
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid $main-menu-border-color;
+  &-title {
+    z-index: 1;
+    padding-left: 20px;
+  }
+  &-animate {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $main-header-background-color;
+  }
+}

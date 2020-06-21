@@ -1,0 +1,10 @@
+ <button class="main-button"
+   (click)="handleButtonClick()"
+   (mouseenter)="handleAnimationState(true)"
+   (mouseleave)="handleAnimationState(false)">
+   <span class="main-button__title">{{title}}</span>
+   <span
+     class="main-button-animate"
+     [@buttonHoverTrigger]="{value: isOpenState ? 'active' : 'inactive'}"
+   ></span>
+ </button>

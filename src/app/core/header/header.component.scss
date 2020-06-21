@@ -1,0 +1,29 @@
+@import "./src/assets/scss/global-variables";
+
+.header {
+  font-family: $main-font-family;
+  display: flex;
+  flex-direction: row;
+  padding: 15px 25px;
+  background: $main-header-background-color;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    color: $main-color;
+    &-item {
+      cursor: pointer;
+      align-self: center;
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &-link:-webkit-any-link {
+      color: $main-color;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "src/assets/scss/global-variables";
+
+.menu-header {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-header-background-color;
+}

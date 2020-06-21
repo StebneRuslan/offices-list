@@ -1,0 +1,15 @@
+.offices-footer {
+  display: flex;
+  justify-content: space-between;
+
+  &__buttons {
+    display: flex;
+
+    &-element {
+      padding-right: 15px;
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}

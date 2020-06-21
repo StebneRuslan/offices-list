@@ -1,0 +1,36 @@
+@import "src/assets/scss/global-variables";
+
+.offices-header {
+  display: flex;
+  flex-direction: column;
+  font-family: $main-font-family;
+  &__titles {
+    display: flex;
+    flex-direction: row;
+    &-active {
+      font-weight: 400;
+    }
+
+    &-inactive {
+      font-weight: 400;
+      position: relative;
+      margin-left: 50px;
+      opacity: $main-inactive-opacity;
+      color: $main-controls-color;
+      &:before {
+        left: -25px;
+        position: absolute;
+        content: '';
+        width: 3px;
+        height: 100%;
+        background-color: $main-controls-color;
+      }
+    }
+  }
+
+  &__descriptions {
+    &-message {
+      font-size: 14px;
+    }
+  }
+}
