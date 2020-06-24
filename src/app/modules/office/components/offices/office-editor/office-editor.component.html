@@ -1,0 +1,54 @@
+<div class="office">
+  <form class="office__form" [formGroup]="form.officeFormGroup">
+    <div class="office__form-container">
+      <label class="office__form-label">
+        <span class="office__form-title">*Country:</span>
+        <select class="office__form-select" formControlName="country">
+          <option class="office__form-select">{{11111}}</option>
+        </select>
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*State:</span>
+        <input class="office__form-input" type="text" formControlName="state">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*Postal Code:</span>
+        <input class="office__form-input" type="text" formControlName="postalCode">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*City:</span>
+        <input class="office__form-input" type="text" formControlName="city">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*Street Address:</span>
+        <input class="office__form-input" type="text" formControlName="streetAddress">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*Address 2:</span>
+        <input class="office__form-input" type="text" formControlName="secondAddress">
+      </label>
+    </div>
+    <div class="office__form-container">
+      <label class="office__form-label">
+        <span class="office__form-title">*Phone:</span>
+        <input class="office__form-input" type="text" formControlName="phone">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*Fax:</span>
+        <input class="office__form-input" type="text" formControlName="fax">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*Email:</span>
+        <input class="office__form-input" type="email" formControlName="email">
+      </label>
+      <label class="office__form-label">
+        <span class="office__form-title">*Office Type:</span>
+        <input class="office__form-input" type="text" formControlName="officeType">
+      </label>
+    </div>
+    <div class="office__form-buttons">
+      <app-button [title]="'Cancel'"></app-button>
+      <app-button [title]="'Save'" (handleClick)="saveOffice()"  [animationColorConfig]="animationColorModel"></app-button>
+    </div>
+  </form>
+</div>

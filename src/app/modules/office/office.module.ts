@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { OfficesHeaderComponent } from './components/offices-header/offices-header.component';
 import { SharedModule } from '../../shared/shared.module';
 import { OfficesFooterComponent } from './components/offices-footer/offices-footer.component';
+import { OfficeCardComponent } from './components/offices/office-card/office-card.component';
+import { OfficeEditorComponent } from './components/offices/office-editor/office-editor.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 export const officesRoutes: Routes = [
   {
@@ -17,12 +20,15 @@ export const officesRoutes: Routes = [
   declarations: [
     OfficesComponent,
     OfficesHeaderComponent,
-    OfficesFooterComponent
+    OfficesFooterComponent,
+    OfficeCardComponent,
+    OfficeEditorComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(officesRoutes)
+    RouterModule.forChild(officesRoutes),
+    ReactiveFormsModule
   ]
 })
 export class OfficeModule { }

@@ -1,0 +1,49 @@
+@import "src/assets/scss/global-variables";
+
+.office {
+  padding: 15px 15px 15px 0;
+  border: $office-editor-border;
+  &__form {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-right: 40px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &-input, &-select {
+      padding: 0 5px;
+      height: 20px;
+      font-family: $main-font-family;
+      font-size: 14px;
+      border: 1px solid;
+    }
+    &-select {
+      width: 162px;
+    }
+    .ng-invalid.ng-touched {
+      border-color: $office-editor-input-outline-error-color;
+    }
+    &-input {
+      width: 150px;
+    }
+    &-label {
+      margin: 5px 0;
+    }
+    &-title {
+      margin-right: 10px;
+      font-size: 12px;
+      color: $main-controls-color;
+      font-family: $main-font-family;
+    }
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
