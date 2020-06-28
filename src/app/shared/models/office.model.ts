@@ -1,14 +1,17 @@
+import { UUID } from 'angular2-uuid';
+
 export class OfficeModel {
-  country = '';
-  state = '';
-  postalCode = '';
-  city = '';
-  streetAddress = '';
-  secondAddress = '';
-  phone = '';
-  fax = '';
-  email = '';
-  officeType = '';
+  id = UUID.UUID();
+  country = 'Country';
+  state = 'State';
+  postalCode = 'Code';
+  city = 'City';
+  streetAddress = 'First Address';
+  secondAddress = 'Second Address';
+  phone = 'Phone';
+  fax = 'Fax';
+  email = 'Email';
+  officeType = false;
 
   constructor(office?) {
     for (const key in office) {

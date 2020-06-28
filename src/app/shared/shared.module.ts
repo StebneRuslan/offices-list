@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/button/button.component';
 import { CoreModule } from '../core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalMessageComponent } from './components/modal-message/modal-message.component';
 
 @NgModule({
   declarations: [
-    ButtonComponent
+    ButtonComponent,
+    ModalMessageComponent
   ],
   exports: [
-    ButtonComponent
+    ButtonComponent,
+    ModalMessageComponent
+  ],
+  entryComponents: [
+    ModalMessageComponent
   ],
   imports: [
     CommonModule,

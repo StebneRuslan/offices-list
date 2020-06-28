@@ -7,10 +7,34 @@ import { OfficeModel } from '../../../../shared/models/office.model';
   styleUrls: ['./offices.component.scss']
 })
 export class OfficesComponent implements OnInit {
-  public newOffice = new OfficeModel();
-  public offices = [1, 2, 3];
+  public isOpen = false;
+  public activeEditId = '';
+  public offices = [];
   constructor() { }
-  ngOnInit() {
+  public ngOnInit(): void {}
+
+  public handleForm(state?: boolean): void {
+    this.isOpen = state || false;
+    this.activeEditId = '';
+  }
+
+  public createOffice(office: OfficeModel): void {
+    this.handleForm(false);
+    this.offices.push(office);
+  }
+
+  public updateOffice(activeOffice: OfficeModel): void {
+    this.offices.splice(this.offices.findIndex(office => office.id === activeOffice.id), 1, activeOffice);
+    this.handleForm(false);
+  }
+
+  public removeOffice(id: string): void {
+    this.handleForm(false);
+    this.offices.splice(this.offices.findIndex(office => office.id = id), 1);
+  }
+
+  public showEditForm(id: string): void {
+    this.activeEditId = id;
   }
 
 }

@@ -5,7 +5,7 @@
   border-bottom: 1px dashed rgb(183, 189, 196);
   padding: 35px 0 35px 0;
   display: flex;
-  margin-bottom: 15px;
+  margin: 15px 35px;
   flex-direction: column;
   &__controls {
     height: 32px;
@@ -13,6 +13,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 15px;
     &-count {
       font-family: $main-font-family;
       font-size: 14px;

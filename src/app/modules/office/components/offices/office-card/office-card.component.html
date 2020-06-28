@@ -1,1 +1,20 @@
-<p>office-card works!</p>
+<div class="office__card">
+  <div class="office__card-container">
+    <div class="office__card-info">
+      <span class="office__card-title">Address</span>
+      <div class="office__card-address-container">
+        <p *ngFor="let item of renderOffice.address" class="office__card-single-text">{{item}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="office__card-container">
+    <div *ngFor="let item of renderOffice.details" class="office__card-info">
+      <span class="office__card-title">{{item.title}}</span>
+      <p class="office__card-single-text">{{item.value}}</p>
+    </div>
+  </div>
+  <div class="office__card-buttons">
+    <app-button class="office__card-remove" [title]="'Remove'" (handleClick)="removeOffice()"></app-button>
+    <app-button [title]="'Edit'" [animationColorConfig]="animationColorModel" (handleClick)="edit()"></app-button>
+  </div>
+</div>

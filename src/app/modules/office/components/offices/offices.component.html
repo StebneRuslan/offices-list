@@ -2,14 +2,31 @@
 <div class="offices">
   <div class="offices__controls">
     <app-button
-      [title]="'Add New Office'">
+      [title]="'Add New Office'"
+      (handleClick)="handleForm(true)">
     </app-button>
-    <p class="offices__controls-count">1 Offices</p>
+    <p class="offices__controls-count">{{offices.length + ' Offices'}}</p>
   </div>
-  <app-office-editor [office]="newOffice"></app-office-editor>
+  <app-office-editor
+    *ngIf="isOpen"
+    [office]="{}"
+    (saveForm)="createOffice($event)"
+    (closeForm)="handleForm(false)">
+  </app-office-editor>
   <div class="offices__list">
     <div *ngFor="let office of offices" class="controls__offices-office">
-      <div>{{office}}</div>
+      <app-office-card
+        *ngIf="office.id !== activeEditId"
+        [office]="office"
+        (remove)="removeOffice($event)"
+        (openEditForm)="showEditForm($event)">
+      </app-office-card>
+      <app-office-editor
+        *ngIf="office.id === activeEditId"
+        [office]="office"
+        (closeForm)="handleForm(false)"
+        (saveForm)="updateOffice($event)">
+      </app-office-editor>
     </div>
   </div>
 </div>

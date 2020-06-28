@@ -4,7 +4,9 @@
       <label class="office__form-label">
         <span class="office__form-title">*Country:</span>
         <select class="office__form-select" formControlName="country">
-          <option class="office__form-select">{{11111}}</option>
+          <option class="office__form-select">United Arab Emirates</option>
+          <option class="office__form-select">United Kingdom</option>
+          <option class="office__form-select">United States</option>
         </select>
       </label>
       <label class="office__form-label">
@@ -43,11 +45,14 @@
       </label>
       <label class="office__form-label">
         <span class="office__form-title">*Office Type:</span>
-        <input class="office__form-input" type="text" formControlName="officeType">
+        <div class="office__form-checkbox-container">
+          <input class="office__form-checkbox" type="checkbox" formControlName="officeType">
+          <span class="office__form-title office__form-description">Primary HQ</span>
+        </div>
       </label>
     </div>
     <div class="office__form-buttons">
-      <app-button [title]="'Cancel'"></app-button>
+      <app-button [title]="'Cancel'" (handleClick)="closeOfficeEditor()"></app-button>
       <app-button [title]="'Save'" (handleClick)="saveOffice()"  [animationColorConfig]="animationColorModel"></app-button>
     </div>
   </form>

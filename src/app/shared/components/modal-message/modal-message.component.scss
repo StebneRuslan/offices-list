@@ -1,0 +1,12 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+
+  &__buttons {
+    display: flex;
+
+    &-cancel {
+      margin-right: 20px;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import "src/assets/scss/global-variables";
+
+.office__card {
+  display: flex;
+  flex-direction: row;
+  font-family: $main-font-family;
+  margin-bottom: 16px;
+  padding: 15px;
+  border: $office-editor-border;
+  border-radius: 2px;
+  justify-content: space-between;
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &-title {
+    margin-right: 10px;
+    color: $main-controls-color;
+    flex-grow: 1;
+  }
+  &-single-text {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    flex-grow: 1;
+  }
+  &-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-address-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-remove {
+    padding-right: 15px;
+  }
+}

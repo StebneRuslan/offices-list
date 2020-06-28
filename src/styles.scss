@@ -2,3 +2,11 @@
 body {
   margin: 0;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+app-offices {
+  width: 100% !important;
+  padding-bottom: 20px;
+}
+

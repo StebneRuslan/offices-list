@@ -1,0 +1,8 @@
+<div class="modal">
+  <p class="modal-message">{{data.message}}</p>
+  <div class="modal__buttons">
+    <app-button class="modal__buttons-cancel" (handleClick)="close(false)" [title]="'Cancel'"></app-button>
+    <app-button class="modal__buttons-success" (handleClick)="close(true)" [title]="'Remove Record'"></app-button>
+  </div>
+</div>
+
