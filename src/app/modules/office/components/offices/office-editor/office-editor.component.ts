@@ -21,7 +21,7 @@ export class OfficeEditorComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.form.officeFormGroup.patchValue(this.office ? this.office : {});
+    this.form.officeFormGroup.patchValue(this.office || {});
   }
 
   public saveOffice(): void {

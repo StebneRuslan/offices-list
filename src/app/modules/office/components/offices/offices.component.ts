@@ -13,8 +13,8 @@ export class OfficesComponent implements OnInit {
   constructor() { }
   public ngOnInit(): void {}
 
-  public handleForm(state?: boolean): void {
-    this.isOpen = state || false;
+  public handleForm(state: boolean = false): void {
+    this.isOpen = state;
     this.activeEditId = '';
   }
 

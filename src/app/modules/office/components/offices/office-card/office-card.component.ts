@@ -13,10 +13,13 @@ import { ModalMessageModel } from '../../../../../shared/models/modal-message.mo
 })
 export class OfficeCardComponent implements OnInit {
   @Input() office: OfficeModel;
+
   @Output() remove: EventEmitter<string> = new EventEmitter<string>();
   @Output() openEditForm: EventEmitter<string> = new EventEmitter<string>();
+
   public renderOffice: OfficeRenderModel;
   public animationColorModel = new AnimationsColorModel('rgb(23, 87, 134)', 'rgb(255, 255, 255)');
+
   constructor(public dialog: MatDialog) { }
 
   public ngOnInit(): void {
@@ -34,7 +37,7 @@ export class OfficeCardComponent implements OnInit {
     });
   }
 
-  public edit(): void {
+  public editOffice(): void {
     this.openEditForm.emit(this.office.id);
   }
 }

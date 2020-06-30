@@ -5,7 +5,7 @@
       [title]="'Add New Office'"
       (handleClick)="handleForm(true)">
     </app-button>
-    <p class="offices__controls-count">{{offices.length + ' Offices'}}</p>
+    <p class="offices__controls-count">{{offices.length + offices.length <= 1 ? ' Office' : ' Offices'}}</p>
   </div>
   <app-office-editor
     *ngIf="isOpen"
