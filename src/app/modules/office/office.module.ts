@@ -10,6 +10,8 @@ import { OfficeEditorComponent } from './components/offices/office-editor/office
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import * as fromOfficesState from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { OfficeEffects } from './effects/office.effects';
 
 export const officesRoutes: Routes = [
   {
@@ -31,6 +33,7 @@ export const officesRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(officesRoutes),
     ReactiveFormsModule,
+    EffectsModule.forFeature([OfficeEffects]),
     StoreModule.forFeature(
       fromOfficesState.officesStateFeatureKey,
       fromOfficesState.officesReducers

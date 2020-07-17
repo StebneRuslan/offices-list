@@ -2,6 +2,7 @@ import { UUID } from 'angular2-uuid';
 
 export class OfficeModel {
   id = UUID.UUID();
+  name = '';
   country = 'Country';
   state = 'State';
   postalCode = 'Code';
