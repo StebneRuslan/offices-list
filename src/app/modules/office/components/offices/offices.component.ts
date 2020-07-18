@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfficeModel } from '../../../../shared/models/office.model';
 import { OfficesState } from '../../reducers';
-import { addOffice, loadOffices, removeOffice, updateOffice} from '../../actions/office.actions';
+import {addOffice, loadOffices, removeOffice, updateOffice} from '../../actions/office.actions';
 import { select, Store } from '@ngrx/store';
 import { selectAllOffices, selectOfficesCount } from '../../selectors/offices.selectors';
 import { Observable } from 'rxjs';

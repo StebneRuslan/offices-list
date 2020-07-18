@@ -2,17 +2,21 @@ import { createAction, props, Action } from '@ngrx/store';
 import { OfficeModel } from '../../../shared/models/office.model';
 
 export enum OfficeActions {
-  Add = '[Offices Component] Add',
+  Add = '[Offices Component] Add Office',
   AddOfficeSuccess = '[Offices Api] Add Office Success',
   AddOfficeError = '[Offices Api] Add Office Error',
 
-  Remove = '[Offices Api] Remove',
+  Remove = '[Offices Api] Remove Office',
   RemoveOfficeSuccess = '[Offices Api] Remove Office Success',
   RemoveOfficeError = '[Offices Api] Remove Office Error',
 
   LoadOffices = '[Offices Api] Load Offices',
   LoadSuccess = '[Offices Api] Load Success',
-  LoadError = '[Offices Api] Load Error'
+  LoadError = '[Offices Api] Load Error',
+
+  UpdateOffice = '[Offices Api] Update Offices',
+  UpdateOfficeSuccess = '[Offices Api] Update Office Success',
+  UpdateOfficeError = '[Offices Api] Update Office Error'
 }
 
 // load offices actions
@@ -62,7 +66,18 @@ export const removeOfficeError = createAction(
   props<{ error: any }>()
 );
 
+// update office actions
 export const updateOffice = createAction(
-  OfficeActions.Remove,
+  OfficeActions.UpdateOffice,
   props<{ data: OfficeModel }>()
+);
+
+export const updateOfficeSuccess = createAction(
+  OfficeActions.UpdateOfficeSuccess,
+  props<{ data: OfficeModel }>()
+);
+
+export const updateOfficeError = createAction(
+  OfficeActions.UpdateOfficeError,
+  props<{ error: any }>()
 );

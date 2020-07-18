@@ -25,6 +25,7 @@ export class OfficeService {
   }
 
   private handleError(response: any): any {
+    debugger;
     return throwError(response.error.message || 'API_FAILURE');
   }
 
@@ -45,18 +46,17 @@ export class OfficeService {
   }
 
   public updateOffice(office: OfficeModel): Observable<OfficeModel> {
-    // TODO: add key
-    return this.apiService.put({ path: 'offices.json', body: office })
+    return this.apiService.put({ path: `offices/${office.name}.json`, body: office })
       .pipe(
-        map(this.extractData),
+        map(data => Object.assign({}, { ...data, name: office.name })),
         catchError(this.handleError)
       );
   }
 
-  public deleteOffices(name: string): Observable<any> {
+  public deleteOffices(name: string): Observable<string> {
     return this.apiService.delete({ path: `offices/${name}.json` })
       .pipe(
-        map(() => name),
+        map(data => data),
         catchError(this.handleError)
       );
   }

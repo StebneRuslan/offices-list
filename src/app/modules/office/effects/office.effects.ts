@@ -34,11 +34,19 @@ export class OfficeEffects {
       ofType(officesActions.removeOffice),
       mergeMap(action => this.officeService.deleteOffices(action.name)
         .pipe(
-          map(result => {
-            debugger;
-            return officesActions.removeOfficeSuccess({ name: result });
-          }),
+          map(result => officesActions.removeOfficeSuccess({name: action.name})),
           catchError(error => of(officesActions.removeOfficeError({ error })))
+        ))
+    )
+  );
+
+  updateOffice$ = createEffect(() => this.actions$
+    .pipe(
+      ofType(officesActions.updateOffice),
+      mergeMap(action => this.officeService.updateOffice(action.data)
+        .pipe(
+          map(data => officesActions.updateOfficeSuccess({ data })),
+          catchError(error => of(officesActions.updateOfficeError({ error })))
         ))
     )
   );

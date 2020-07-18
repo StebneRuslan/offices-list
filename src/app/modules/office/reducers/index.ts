@@ -10,9 +10,8 @@ import { OfficeModel } from '../../../shared/models/office.model';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import {
   addOffice,
-  updateOffice,
   officesLoadSuccess,
-  removeOfficeSuccess, addOfficeSuccess
+  removeOfficeSuccess, addOfficeSuccess, removeOffice, updateOfficeSuccess
 } from '../actions/office.actions';
 
 export const officesStateFeatureKey = 'officesState';
@@ -29,14 +28,14 @@ export const initialOfficesState = adapter.getInitialState();
 
 export const officesReducers = createReducer(
   initialOfficesState,
-  on(officesLoadSuccess, (state, action) => adapter.addMany(action.data, state)),
-  on(addOfficeSuccess, (state, action) => adapter.addOne(action.data, state)),
-  on(removeOfficeSuccess, (state, action) => {
-    debugger;
-    return adapter.removeOne(action.name, state);
+  on(officesLoadSuccess, (state, action) => {
+    console.log('@');
+    return adapter.addMany(action.data, state);
   }),
-  on(updateOffice, (state, action) => adapter.updateOne({
-    id: action.data.id,
+  on(addOfficeSuccess, (state, action) => adapter.addOne(action.data, state)),
+  on(removeOfficeSuccess, (state, action) => adapter.removeOne(action.name, state)),
+  on(updateOfficeSuccess, (state, action) => adapter.updateOne({
+    id: action.data.name,
     changes: action.data
   }, state))
 );

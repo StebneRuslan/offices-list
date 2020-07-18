@@ -15,6 +15,7 @@
   </app-office-editor>
   <div class="offices__list">
     <div *ngFor="let office of offices$ | async" class="controls__offices-office">
+      {{office.name}}
       <app-office-card
         *ngIf="office.id !== activeEditId"
         [office]="office"
