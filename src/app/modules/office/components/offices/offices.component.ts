@@ -15,18 +15,19 @@ import { OfficeService } from '../../../../core/services/office/office.service';
 export class OfficesComponent implements OnInit {
   public isOpen = false;
   public activeEditId = '';
-  // public offices = [];
   public offices$: Observable<OfficeModel[]>;
   public officesCount$: Observable<number>;
   constructor(
     private store: Store<OfficesState[]>,
-    private officeService: OfficeService
   ) { }
 
   public ngOnInit(): void {
     this.offices$ = this.store.select(selectAllOffices);
     this.officesCount$ = this.store.select(selectOfficesCount);
     this.store.dispatch(loadOffices());
+    this.offices$.subscribe(() => {
+      this.handleForm(false);
+    });
   }
 
   public handleForm(state: boolean = false): void {
@@ -35,17 +36,14 @@ export class OfficesComponent implements OnInit {
   }
 
   public createOffice(office: OfficeModel): void {
-    this.handleForm(false);
     this.store.dispatch(addOffice({ data: office }));
   }
 
   public updateOffice(activeOffice: OfficeModel): void {
     this.store.dispatch(updateOffice({ data: activeOffice }));
-    this.handleForm(false);
   }
 
   public removeOffice(name: string): void {
-    this.handleForm(false);
     this.store.dispatch(removeOffice({ name }));
   }
 

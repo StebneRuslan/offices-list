@@ -20,12 +20,10 @@ export class OfficeService {
   }
 
   private extractData(response: any): any {
-    // TODO: handle data
     return response;
   }
 
   private handleError(response: any): any {
-    debugger;
     return throwError(response.error.message || 'API_FAILURE');
   }
 
@@ -40,7 +38,7 @@ export class OfficeService {
   public addOffice(office: OfficeModel): Observable<OfficeModel> {
     return this.apiService.post({ path: 'offices.json', body: office })
       .pipe(
-        map(data => data),
+        map(this.extractData),
         catchError(this.handleError)
       );
   }
@@ -56,7 +54,7 @@ export class OfficeService {
   public deleteOffices(name: string): Observable<string> {
     return this.apiService.delete({ path: `offices/${name}.json` })
       .pipe(
-        map(data => data),
+        map(this.extractData),
         catchError(this.handleError)
       );
   }
