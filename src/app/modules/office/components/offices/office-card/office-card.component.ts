@@ -32,7 +32,7 @@ export class OfficeCardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(doRemove => {
       if (doRemove) {
-        this.remove.emit(this.office.id);
+        this.remove.emit(this.office.name);
       }
     });
   }

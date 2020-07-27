@@ -7,7 +7,11 @@ import { SharedModule } from '../../shared/shared.module';
 import { OfficesFooterComponent } from './components/offices-footer/offices-footer.component';
 import { OfficeCardComponent } from './components/offices/office-card/office-card.component';
 import { OfficeEditorComponent } from './components/offices/office-editor/office-editor.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import * as fromOfficesState from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { OfficeEffects } from './effects/office.effects';
 
 export const officesRoutes: Routes = [
   {
@@ -28,7 +32,12 @@ export const officesRoutes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(officesRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EffectsModule.forFeature([OfficeEffects]),
+    StoreModule.forFeature(
+      fromOfficesState.officesStateFeatureKey,
+      fromOfficesState.officesReducers
+    )
   ]
 })
 export class OfficeModule { }

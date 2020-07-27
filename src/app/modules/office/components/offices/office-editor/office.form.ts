@@ -17,6 +17,7 @@ export default class OfficeForm {
     this.officeFormGroup = this.formBuilder.group({
       id: new FormControl(this.model.id, {validators: this.defaultOfficeValidators}),
       country: new FormControl(this.model.country, {validators: this.defaultOfficeValidators}),
+      name: new FormControl(this.model.name, {validators: this.defaultOfficeValidators}),
       state: new FormControl(this.model.state, {validators: this.defaultOfficeValidators}),
       postalCode: new FormControl(this.model.postalCode, {validators: this.defaultOfficeValidators}),
       city: new FormControl(this.model.city, {validators: this.defaultOfficeValidators}),

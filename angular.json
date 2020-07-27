@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "offices-list"
+  "defaultProject": "offices-list",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

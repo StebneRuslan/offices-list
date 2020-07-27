@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { OfficeModel } from '../../../../shared/models/office.model';
+import { OfficesState } from '../../reducers';
+import {addOffice, loadOffices, removeOffice, updateOffice} from '../../actions/office.actions';
+import { select, Store } from '@ngrx/store';
+import { selectAllOffices, selectOfficesCount } from '../../selectors/offices.selectors';
+import { Observable } from 'rxjs';
+import { OfficeService } from '../../../../core/services/office/office.service';
 
 @Component({
   selector: 'app-offices',
@@ -9,9 +15,20 @@ import { OfficeModel } from '../../../../shared/models/office.model';
 export class OfficesComponent implements OnInit {
   public isOpen = false;
   public activeEditId = '';
-  public offices = [];
-  constructor() { }
-  public ngOnInit(): void {}
+  public offices$: Observable<OfficeModel[]>;
+  public officesCount$: Observable<number>;
+  constructor(
+    private store: Store<OfficesState[]>,
+  ) { }
+
+  public ngOnInit(): void {
+    this.offices$ = this.store.select(selectAllOffices);
+    this.officesCount$ = this.store.select(selectOfficesCount);
+    this.store.dispatch(loadOffices());
+    this.offices$.subscribe(() => {
+      this.handleForm(false);
+    });
+  }
 
   public handleForm(state: boolean = false): void {
     this.isOpen = state;
@@ -19,18 +36,15 @@ export class OfficesComponent implements OnInit {
   }
 
   public createOffice(office: OfficeModel): void {
-    this.handleForm(false);
-    this.offices.push(office);
+    this.store.dispatch(addOffice({ data: office }));
   }
 
   public updateOffice(activeOffice: OfficeModel): void {
-    this.offices.splice(this.offices.findIndex(office => office.id === activeOffice.id), 1, activeOffice);
-    this.handleForm(false);
+    this.store.dispatch(updateOffice({ data: activeOffice }));
   }
 
-  public removeOffice(id: string): void {
-    this.handleForm(false);
-    this.offices.splice(this.offices.findIndex(office => office.id = id), 1);
+  public removeOffice(name: string): void {
+    this.store.dispatch(removeOffice({ name }));
   }
 
   public showEditForm(id: string): void {
