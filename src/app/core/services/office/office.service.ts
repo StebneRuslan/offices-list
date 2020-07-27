@@ -12,11 +12,13 @@ export class OfficeService {
   constructor(private apiService: ApiService) { }
 
   public handleOfficeNames(offices: OfficeModel[]): OfficeModel[] {
-    return Object.keys(offices).map(key => Object.assign({}, {...offices[key], name: key}));
+    return Object.keys(offices).map(key => {
+      return {...offices[key], name: key};
+    });
   }
 
   public handleSingleOfficeNames(office: OfficeModel, data): OfficeModel {
-    return Object.assign({}, { ...office, ...data });
+    return { ...office, ...data };
   }
 
   private extractData(response: any): any {
@@ -46,7 +48,9 @@ export class OfficeService {
   public updateOffice(office: OfficeModel): Observable<OfficeModel> {
     return this.apiService.put({ path: `offices/${office.name}.json`, body: office })
       .pipe(
-        map(data => Object.assign({}, { ...data, name: office.name })),
+        map(data => {
+          return { ...data, name: office.name };
+        }),
         catchError(this.handleError)
       );
   }
