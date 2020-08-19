@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OfficeModel } from '../../../../shared/models/office.model';
 import { OfficesState } from '../../reducers';
-import {addOffice, loadOffices, removeOffice, updateOffice} from '../../actions/office.actions';
+import { addOffice, loadOffices, removeOffice, updateOffice } from '../../actions/office.actions';
 import { select, Store } from '@ngrx/store';
-import { selectAllOffices, selectOfficesCount } from '../../selectors/offices.selectors';
+import { selectAllOffices, selectOfficesCount, selectOfficesError } from '../../selectors/offices.selectors';
 import { Observable } from 'rxjs';
 import { OfficeService } from '../../../../core/services/office/office.service';
 
@@ -13,12 +13,13 @@ import { OfficeService } from '../../../../core/services/office/office.service';
   styleUrls: ['./offices.component.scss']
 })
 export class OfficesComponent implements OnInit {
+  public officeError$: Observable<string> = this.store.select(selectOfficesError);
   public isOpen = false;
   public activeEditId = '';
   public offices$: Observable<OfficeModel[]>;
   public officesCount$: Observable<number>;
   constructor(
-    private store: Store<OfficesState[]>,
+    private store: Store<OfficesState[]>
   ) { }
 
   public ngOnInit(): void {

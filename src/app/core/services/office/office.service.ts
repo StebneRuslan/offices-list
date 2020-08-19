@@ -26,7 +26,7 @@ export class OfficeService {
   }
 
   private handleError(response: any): any {
-    return throwError(response.error.message || 'API_FAILURE');
+    return throwError(response.error.error || 'API_FAILURE');
   }
 
   public getOffices(): Observable<OfficeModel[]> {

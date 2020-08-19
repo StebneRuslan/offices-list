@@ -11,7 +11,7 @@ import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import {
   addOffice,
   officesLoadSuccess,
-  removeOfficeSuccess, addOfficeSuccess, removeOffice, updateOfficeSuccess
+  removeOfficeSuccess, addOfficeSuccess, removeOffice, updateOfficeSuccess, addOfficeError
 } from '../actions/office.actions';
 
 export const officesStateFeatureKey = 'officesState';
@@ -24,17 +24,22 @@ export const adapter = createEntityAdapter<OfficeModel>({
   selectId: (model: OfficeModel) => model.name
 });
 
-export const initialOfficesState = adapter.getInitialState();
+export const initialOfficesState = adapter.getInitialState({
+  error: null
+});
 
 export const officesReducers = createReducer(
   initialOfficesState,
-  on(officesLoadSuccess, (state, action) => adapter.addMany(action.data, state)),
-  on(addOfficeSuccess, (state, action) => adapter.addOne(action.data, state)),
-  on(removeOfficeSuccess, (state, action) => adapter.removeOne(action.name, state)),
+  on(officesLoadSuccess, (state, action) => adapter.addMany(action.data, { ...state, error: null })),
+  on(addOfficeSuccess, (state, action) => adapter.addOne(action.data, { ...state, error: null })),
+  on(removeOfficeSuccess, (state, action) => adapter.removeOne(action.name, { ...state, error: null })),
   on(updateOfficeSuccess, (state, action) => adapter.updateOne({
     id: action.data.name,
     changes: action.data
-  }, state))
+  }, { ...state, error: null })),
+  on(addOfficeError, (state, action) => {
+    return { ...state, error: action.error };
+  }),
 );
 
 

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfficeCardComponent } from './office-card.component';
+import { ButtonComponent } from '../../../../../shared/components/button/button.component';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('OfficeCardComponent', () => {
   let component: OfficeCardComponent;
@@ -8,7 +11,18 @@ describe('OfficeCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OfficeCardComponent ]
+      imports: [
+        MatDialogModule,
+        BrowserAnimationsModule
+      ],
+      declarations: [
+        OfficeCardComponent,
+        ButtonComponent
+      ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ]
     })
     .compileComponents();
   }));
