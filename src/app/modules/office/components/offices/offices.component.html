@@ -1,4 +1,5 @@
 <app-offices-header></app-offices-header>
+{{ offices$ | async | json }}
 {{officeError$ | async}}
 <div class="offices">
   <div class="offices__controls">

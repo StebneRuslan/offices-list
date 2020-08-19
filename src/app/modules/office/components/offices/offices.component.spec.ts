@@ -8,18 +8,20 @@ import { OfficeCardComponent } from './office-card/office-card.component';
 import { OfficesFooterComponent } from '../offices-footer/offices-footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Store } from '@ngrx/store';
-import { of } from 'rxjs';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { MemoizedSelector } from '@ngrx/store';
+import * as officesReducer from '../../reducers';
+import { OfficeModel } from '../../../../shared/models/office.model';
+import { selectAllOffices } from '../../selectors/offices.selectors';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-describe('OfficesComponent', () => {
+fdescribe('OfficesComponent', () => {
   let component: OfficesComponent;
   let fixture: ComponentFixture<OfficesComponent>;
-  const storeMock = {
-    select: () => of([]),
-    dispatch: () => {
-      console.log('Mock dispatch');
-    }
-  };
+  let mockStore: MockStore;
+  let mockOfficesSelector: MemoizedSelector<officesReducer.OfficesState, OfficeModel[]>;
+
+  const initialState = { officesState: { entities: {}, ids: [] }};
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -35,10 +37,7 @@ describe('OfficesComponent', () => {
         BrowserAnimationsModule
       ],
       providers: [
-        {
-          provide: Store,
-          useValue: storeMock
-        }
+        provideMockStore({ initialState })
       ]
     })
     .compileComponents();
@@ -47,6 +46,8 @@ describe('OfficesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OfficesComponent);
     component = fixture.componentInstance;
+    // mockStore = TestBed.get(MockStore);
+    // mockOfficesSelector = mockStore.overrideSelector(selectAllOffices, [new OfficeModel()]);
     fixture.detectChanges();
   });
 
