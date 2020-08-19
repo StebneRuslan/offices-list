@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OfficeModel } from '../../../../../shared/models/office.model';
 import { AnimationsColorModel } from '../../../../../shared/models/animations-color.model';
 import { OfficeRenderModel } from '../../../../../shared/models/office-render.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ModalMessageComponent } from '../../../../../shared/components/modal-message/modal-message.component';
 import { ModalMessageModel } from '../../../../../shared/models/modal-message.model';
 
