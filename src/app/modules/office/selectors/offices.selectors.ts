@@ -1,6 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { OfficesState, officesStateFeatureKey } from '../reducers';
-import { selectAll } from '../reducers';
+import { OfficesState, officesStateFeatureKey, selectAll } from '../reducers';
 
 export const selectOfficesState = createFeatureSelector<OfficesState>(officesStateFeatureKey);
 
